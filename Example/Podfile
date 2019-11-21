@@ -1,9 +1,10 @@
 use_frameworks!
 
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'WhiteDnsHelper_Example' do
   pod 'WhiteDnsHelper', :path => '../'
+  pod 'White-SDK-iOS', '~>2.1'
 
   target 'WhiteDnsHelper_Tests' do
     inherit! :search_paths

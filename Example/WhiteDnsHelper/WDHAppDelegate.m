@@ -7,12 +7,33 @@
 //
 
 #import "WDHAppDelegate.h"
+#import <WhiteDnsHelper/WhiteDnsManager.h>
+#import <WhiteDnsHelper/WhiteProtocol.h>
 
 @implementation WDHAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[WhiteDnsManager shareInstance] querySdkDomain];
+    });
+    
+    Class cls = NSClassFromString(@"WKBrowsingContextController");
+    SEL sel = NSSelectorFromString(@"registerSchemeForCustomProtocol:");
+    
+    if ([(id)cls respondsToSelector:sel]) {
+        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        // 把 http 和 https 请求交给 NSURLProtocol 处理
+        [(id)cls performSelector:sel withObject:@"http"];
+        [(id)cls performSelector:sel withObject:@"https"];
+#pragma clang diagnostic pop
+
+    }
+
+    [NSURLProtocol registerClass:[WhiteProtocol class]];
+    
     return YES;
 }
 

@@ -57,13 +57,13 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		670DA8B5F8A0859466C5EDF3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		670DA8B5F8A0859466C5EDF3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89F8E3C50F7436438C796902 /* Pods_WhiteDnsHelper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhiteDnsHelper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE9739E5A8BECFB50899E83 /* Pods-WhiteDnsHelper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteDnsHelper_Example.release.xcconfig"; path = "Target Support Files/Pods-WhiteDnsHelper_Example/Pods-WhiteDnsHelper_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C5170D08EEDA080F9E3AC478 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		C8D3FC79B389741580168962 /* WhiteDnsHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = WhiteDnsHelper.podspec; path = ../WhiteDnsHelper.podspec; sourceTree = "<group>"; };
+		C5170D08EEDA080F9E3AC478 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C8D3FC79B389741580168962 /* WhiteDnsHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = WhiteDnsHelper.podspec; path = ../WhiteDnsHelper.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CB64174C61DC15553494AA28 /* Pods-WhiteDnsHelper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteDnsHelper_Example.debug.xcconfig"; path = "Target Support Files/Pods-WhiteDnsHelper_Example/Pods-WhiteDnsHelper_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D06B710585F28F30E3DCD984 /* Pods-WhiteDnsHelper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteDnsHelper_Tests.release.xcconfig"; path = "Target Support Files/Pods-WhiteDnsHelper_Tests/Pods-WhiteDnsHelper_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E54804EC8FD6743F19FFA1EC /* Pods-WhiteDnsHelper_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteDnsHelper_Tests.debug.xcconfig"; path = "Target Support Files/Pods-WhiteDnsHelper_Tests/Pods-WhiteDnsHelper_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,7 +103,6 @@
 				E54804EC8FD6743F19FFA1EC /* Pods-WhiteDnsHelper_Tests.debug.xcconfig */,
 				D06B710585F28F30E3DCD984 /* Pods-WhiteDnsHelper_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,6 +208,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				3C83707E355773504D5FD1F8 /* [CP] Embed Pods Frameworks */,
+				9B900F1A40B164983ACF3CC9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -258,6 +258,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -302,11 +303,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-WhiteDnsHelper_Example/Pods-WhiteDnsHelper_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
 				"${BUILT_PRODUCTS_DIR}/WhiteDnsHelper/WhiteDnsHelper.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
+				"${BUILT_PRODUCTS_DIR}/dsBridge/dsBridge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhiteDnsHelper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/dsBridge.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -333,6 +340,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B900F1A40B164983ACF3CC9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhiteDnsHelper_Example/Pods-WhiteDnsHelper_Example-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/White-SDK-iOS/WhiteSDK.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WhiteSDK.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WhiteDnsHelper_Example/Pods-WhiteDnsHelper_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D9E496CE9E64E57A27250BF5 /* [CP] Check Pods Manifest.lock */ = {
