@@ -15,12 +15,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //异步查询dns
         [[WhiteDnsManager shareInstance] querySdkDomain];
     });
     
+    // WKWebview 拦截方式
     Class cls = NSClassFromString(@"WKBrowsingContextController");
     SEL sel = NSSelectorFromString(@"registerSchemeForCustomProtocol:");
-    
     if ([(id)cls respondsToSelector:sel]) {
         
 #pragma clang diagnostic push
@@ -31,7 +32,6 @@
 #pragma clang diagnostic pop
 
     }
-
     [NSURLProtocol registerClass:[WhiteDnsProtocol class]];
     
     return YES;
