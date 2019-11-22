@@ -5,19 +5,20 @@
 //  Created by yleaf on 2019/11/21.
 //
 
-#import "WhiteProtocol.h"
+#import "WhiteDnsProtocol.h"
 #import "WhiteDnsManager.h"
+#import <HappyDNS/HappyDNS.h>
 
 static NSString *kDomain = @"herewhite.com";
 
-@interface WhiteProtocol ()
+@interface WhiteDnsProtocol ()
 
 @property (nonatomic, readwrite, strong) NSURLSessionDataTask *task;
 @property (nonatomic, readwrite, strong) NSMutableData *data;
 @property (nonatomic, readwrite, strong) NSURLResponse *response;
 @end
 
-@implementation WhiteProtocol
+@implementation WhiteDnsProtocol
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
 {
@@ -26,7 +27,40 @@ static NSString *kDomain = @"herewhite.com";
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
 {
-    return request;
+    NSMutableURLRequest *mutableReqeust = [request mutableCopy];
+    NSURL *url = mutableReqeust.URL;
+    NSString *originalUrl = url.absoluteString;
+    
+    NSString *ip = [[WhiteDnsManager shareInstance] ipForDomain:url.host];
+                    
+    if (ip && url.host) {
+        NSRange hostFirstRange = [originalUrl rangeOfString:url.host];
+        if (NSNotFound != hostFirstRange.location) {
+            NSString *newUrl = [originalUrl stringByReplacingCharactersInRange:hostFirstRange withString:ip];
+            mutableReqeust.URL = [NSURL URLWithString:newUrl];
+            [mutableReqeust setValue:url.host forHTTPHeaderField:@"host"];
+        }
+    }
+    
+    //国内需要 httpdns 的用户，不需要全球加速。更换成国内 API 的 ip 地址。数据库内容一致
+    if ([url.host containsString:WhiteGlobalStorage] && [QNDnsManager needHttpDns]) {
+        NSRange scdnRange = [originalUrl rangeOfString:WhiteGlobalStorage];
+        NSString *normalIp = [[WhiteDnsManager shareInstance] ipForDomain:WhiteNormalStorage];
+        if (NSNotFound != scdnRange.location && normalIp) {
+            NSString *newUrl = [originalUrl stringByReplacingCharactersInRange:scdnRange withString:normalIp];
+            mutableReqeust.URL = [NSURL URLWithString:newUrl];
+            [mutableReqeust setValue:WhiteNormalStorage forHTTPHeaderField:@"host"];
+        } else {
+            //即使没有查询到，也不使用 SNI 的 API 地址
+            NSString *newUrl = [originalUrl stringByReplacingCharactersInRange:scdnRange withString:WhiteNormalStorage];
+            mutableReqeust.URL = [NSURL URLWithString:newUrl];
+        }
+    } else if ([url.host containsString:WhiteGlobalStorage]) {
+        //全球加速地址是SNI场景，不能直接使用 httpdns，需要 libcurl 进行请求
+        mutableReqeust.URL = url;
+    }
+    
+    return mutableReqeust;
 }
 
 #pragma mark - Private class methods
@@ -38,10 +72,16 @@ static NSString *kDomain = @"herewhite.com";
         return NO;
     }
     
+    //海外用户，不需要 httpdns 处理，容易画蛇添足
+    if (![QNDnsManager needHttpDns]) {
+        return NO;
+    }
+    
     // 有解析结果再拦截
     if ([request.URL.host containsString:kDomain] && [[WhiteDnsManager shareInstance] ipForDomain:request.URL.host]) {
         return YES;
     }
+    
     return NO;
 }
 
@@ -77,20 +117,6 @@ static NSString *kDomain = @"herewhite.com";
 {
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
     [[self class] setProperty:@YES forKey:kFlagProperty inRequest:mutableReqeust];
-    NSURL *url = mutableReqeust.URL;
-    NSString *originalUrl = url.absoluteString;
-    
-    NSString *ip = [[WhiteDnsManager shareInstance] ipForDomain:url.host];
-                    
-    if (ip && url.host) {
-        NSRange hostFirstRange = [originalUrl rangeOfString:url.host];
-        if (NSNotFound != hostFirstRange.location) {
-            NSString *newUrl = [originalUrl stringByReplacingCharactersInRange:hostFirstRange withString:ip];
-            mutableReqeust.URL = [NSURL URLWithString:newUrl];
-            [mutableReqeust setValue:url.host forHTTPHeaderField:@"host"];
-        }
-    }
-    
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:(id<NSURLSessionDelegate>)self delegateQueue:nil];
     self.task = [session dataTaskWithRequest:mutableReqeust];
     [self.task resume];
@@ -107,15 +133,6 @@ static NSString * kFlagProperty = @"com.herewhite.com";
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)newRequest completionHandler:(void (^)(NSURLRequest *))completionHandler
 {
     NSMutableURLRequest *redirectRequest;
-    
-#pragma unused(session)
-#pragma unused(task)
-    assert(task == self.task);
-    assert(response != nil);
-    assert(newRequest != nil);
-#pragma unused(completionHandler)
-    assert(completionHandler != nil);
-
     assert([[self class] propertyForKey:kFlagProperty inRequest:newRequest] != nil);
     
     redirectRequest = [newRequest mutableCopy];

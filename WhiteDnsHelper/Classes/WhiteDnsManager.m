@@ -10,9 +10,9 @@
 
 static NSString *const kTencentDns = @"119.29.29.29";
 static NSString *const kSDKAPIHost = @"cloudcapiv4.herewhite.com";
-static NSString *const kNormalStorage = @"expresscloudharestoragev2.herewhite.com";
-static NSString *const kConStorage = @"cloudharestoragev2.herewhite.com";
-static NSString *const kGlobalStorage = @"scdncloudharestoragev3.herewhite.com";
+NSString *const WhiteNormalStorage = @"expresscloudharestoragev2.herewhite.com";
+NSString *const WhiteConStorage = @"cloudharestoragev2.herewhite.com";
+NSString *const WhiteGlobalStorage = @"scdncloudharestoragev3.herewhite.com";
 
 @interface WhiteDnsManager ()
 @property (nonatomic, strong, readwrite) NSMutableDictionary<NSString *, NSArray<NSString *>*> *domainMap;
@@ -42,9 +42,9 @@ static WhiteDnsManager *_sharedObject;
 - (void)querySdkDomain
 {
     [self queryHost:kSDKAPIHost];
-    [self queryHost:kNormalStorage];
-    [self queryHost:kConStorage];
-    [self queryHost:kGlobalStorage];
+    [self queryHost:WhiteNormalStorage];
+    [self queryHost:WhiteConStorage];
+    [self queryHost:WhiteGlobalStorage];
 }
 
 - (NSString *)ipForDomain:(NSString *)host

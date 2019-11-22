@@ -8,7 +8,7 @@
 
 #import "WDHAppDelegate.h"
 #import <WhiteDnsHelper/WhiteDnsManager.h>
-#import <WhiteDnsHelper/WhiteProtocol.h>
+#import <WhiteDnsHelper/WhiteDnsProtocol.h>
 
 @implementation WDHAppDelegate
 
@@ -32,7 +32,7 @@
 
     }
 
-    [NSURLProtocol registerClass:[WhiteProtocol class]];
+    [NSURLProtocol registerClass:[WhiteDnsProtocol class]];
     
     return YES;
 }

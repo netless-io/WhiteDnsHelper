@@ -9,6 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const WhiteNormalStorage;
+extern NSString *const WhiteConStorage;
+extern NSString *const WhiteGlobalStorage;
+
 @interface WhiteDnsManager : NSObject
 
 /**

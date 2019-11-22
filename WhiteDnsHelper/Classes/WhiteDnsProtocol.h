@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WhiteProtocol : NSURLProtocol
+@interface WhiteDnsProtocol : NSURLProtocol
 
 @end
 
