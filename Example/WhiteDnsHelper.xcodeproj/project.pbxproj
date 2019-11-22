@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3986331E2386C09000E903B6 /* RoomCommandListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398633132386C08E00E903B6 /* RoomCommandListController.m */; };
+		3986331F2386C09000E903B6 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398633142386C08E00E903B6 /* StartViewController.m */; };
+		398633202386C09000E903B6 /* PlayerCommandListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398633152386C08F00E903B6 /* PlayerCommandListController.m */; };
+		398633212386C09000E903B6 /* WhitePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398633192386C08F00E903B6 /* WhitePlayerViewController.m */; };
+		398633222386C09000E903B6 /* WhiteRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3986331A2386C08F00E903B6 /* WhiteRoomViewController.m */; };
+		398633232386C09000E903B6 /* WhiteBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3986331C2386C09000E903B6 /* WhiteBaseViewController.m */; };
 		52F30E31740E3392BFE4CE3C /* Pods_WhiteDnsHelper_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEDBA365108C7958B58DE1E /* Pods_WhiteDnsHelper_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -38,6 +44,18 @@
 
 /* Begin PBXFileReference section */
 		1BEDBA365108C7958B58DE1E /* Pods_WhiteDnsHelper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhiteDnsHelper_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		398633122386C08E00E903B6 /* RoomCommandListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomCommandListController.h; sourceTree = "<group>"; };
+		398633132386C08E00E903B6 /* RoomCommandListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomCommandListController.m; sourceTree = "<group>"; };
+		398633142386C08E00E903B6 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		398633152386C08F00E903B6 /* PlayerCommandListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCommandListController.m; sourceTree = "<group>"; };
+		398633162386C08F00E903B6 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		398633172386C08F00E903B6 /* WhiteRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteRoomViewController.h; sourceTree = "<group>"; };
+		398633182386C08F00E903B6 /* PlayerCommandListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCommandListController.h; sourceTree = "<group>"; };
+		398633192386C08F00E903B6 /* WhitePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhitePlayerViewController.m; sourceTree = "<group>"; };
+		3986331A2386C08F00E903B6 /* WhiteRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteRoomViewController.m; sourceTree = "<group>"; };
+		3986331B2386C09000E903B6 /* WhiteBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteBaseViewController.h; sourceTree = "<group>"; };
+		3986331C2386C09000E903B6 /* WhiteBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteBaseViewController.m; sourceTree = "<group>"; };
+		3986331D2386C09000E903B6 /* WhitePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhitePlayerViewController.h; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* WhiteDnsHelper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhiteDnsHelper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +164,18 @@
 				6003F59C195388D20070C39A /* WDHAppDelegate.h */,
 				6003F59D195388D20070C39A /* WDHAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
+				398633182386C08F00E903B6 /* PlayerCommandListController.h */,
+				398633152386C08F00E903B6 /* PlayerCommandListController.m */,
+				398633122386C08E00E903B6 /* RoomCommandListController.h */,
+				398633132386C08E00E903B6 /* RoomCommandListController.m */,
+				398633162386C08F00E903B6 /* StartViewController.h */,
+				398633142386C08E00E903B6 /* StartViewController.m */,
+				3986331B2386C09000E903B6 /* WhiteBaseViewController.h */,
+				3986331C2386C09000E903B6 /* WhiteBaseViewController.m */,
+				3986331D2386C09000E903B6 /* WhitePlayerViewController.h */,
+				398633192386C08F00E903B6 /* WhitePlayerViewController.m */,
+				398633172386C08F00E903B6 /* WhiteRoomViewController.h */,
+				3986331A2386C08F00E903B6 /* WhiteRoomViewController.m */,
 				6003F5A5195388D20070C39A /* WDHViewController.h */,
 				6003F5A6195388D20070C39A /* WDHViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
@@ -304,6 +334,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-WhiteDnsHelper_Example/Pods-WhiteDnsHelper_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/WhiteDnsHelper/WhiteDnsHelper.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 				"${BUILT_PRODUCTS_DIR}/dsBridge/dsBridge.framework",
@@ -311,6 +342,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhiteDnsHelper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/dsBridge.framework",
@@ -389,8 +421,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				398633202386C09000E903B6 /* PlayerCommandListController.m in Sources */,
+				398633222386C09000E903B6 /* WhiteRoomViewController.m in Sources */,
 				6003F59E195388D20070C39A /* WDHAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* WDHViewController.m in Sources */,
+				398633212386C09000E903B6 /* WhitePlayerViewController.m in Sources */,
+				398633232386C09000E903B6 /* WhiteBaseViewController.m in Sources */,
+				3986331F2386C09000E903B6 /* StartViewController.m in Sources */,
+				3986331E2386C09000E903B6 /* RoomCommandListController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
